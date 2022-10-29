@@ -17,34 +17,66 @@
         <h1>DevInBank</h1>
     </header>
     <main class="main">
-        <h1>Formulário de cadastro</h1>
-        <form id="form" class="form">
-            <div>
-                <label for="nome">Nome:</label>
-                <input id="nome" required>
-            </div>
-            <div>
-                <label for="cpf">CPF:</label>
-                <input id="cpf" required>
-            </div>
-            <div>
-                <label for="celular">Celular:</label>
-                <input id="celular" required>
-            </div>
-            <div>
-                <label for="senha">Senha:</label>
-                <input id="senha" required>
-            </div>
-            <div>
-                <label for="confirmacao">Confirmação de senha:</label>
-                <input id="confirmacao" required>
-            </div>
+        <section class="section">
+            <h1>Formulário de cadastro</h1>
+            <form id="form" class="form">
+                <div>
+                    <label for="nome">Nome:</label>
+                    <input id="nome" required>
+                </div>
+                <div>
+                    <label for="cpf">CPF:</label>
+                    <input id="cpf" required>
+                </div>
+                <div>
+                    <label for="celular">Celular:</label>
+                    <input id="celular" required>
+                </div>
+                <div>
+                    <label for="senha">Senha:</label>
+                    <input id="senha" required>
+                </div>
+                <div>
+                    <label for="confirmacao">Confirmação de senha:</label>
+                    <input id="confirmacao" required>
+                </div>
 
-            <div>
-                <button type="reset">Limpar</button>
-                <button type="submit">Cadastrar</button>
-            </div>
-        </form>
+                <div>
+                    <button type="reset">Limpar</button>
+                    <button type="submit">Cadastrar</button>
+                </div>
+            </form>
+        </section>
+        <hr>
+        <section class="section">
+            <h1>Ações</h1>
+            <form id="form-acoes" class="form">
+                <div>
+                <label for="operacao">Operação</label>
+                <select id="operacao" required>
+                    <option value="SAQUE">Saque</option>
+                    <option value="DEPOSITO">Depósito</option>
+                    <option value="SALDO">Consulta saldo</option>
+                </select>
+                </div>
+                <div>
+                <label for="valor">Valor</label>
+                <input id="valor" required>
+                </div>
+                <div>
+                <label for="conta">Conta</label>
+                <input id="conta" type="number" required>
+                </div>
+                <div>
+                <label for="senha">Senha</label>
+                <input id="senha" required>
+                </div>
+                <div>
+                    <button type="reset">Limpar</button>
+                    <button type="submit">Confirmar</button>
+                </div>
+            </form>
+        </section>
     </main>
     <footer class="footer">
         <p>DevInBank</p>

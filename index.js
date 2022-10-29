@@ -34,3 +34,14 @@ const handleSubmit = (evento) => {
 
 const form = document.getElementById('form');
 form.addEventListener('submit', handleSubmit);
+
+// Operações
+
+const trocarOperacao = (evento) => {
+    const valor = document.getElementById('valor');
+    valor.disabled = evento.target.value === 'SALDO';
+    valor.required = evento.target.value !== 'SALDO';
+};
+
+const operacao = document.getElementById('operacao');
+operacao.addEventListener('change', trocarOperacao);
