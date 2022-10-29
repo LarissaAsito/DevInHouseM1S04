@@ -9,6 +9,8 @@
     font-family: 'Inter', sans-serif;
 
     color:aliceblue;*/
+    margin: 0;
+    padding: 0;
     vertical-align: baseline;
     list-style: none;
     border: 0;
@@ -40,7 +42,8 @@ button:hover {
     opacity: 0.7;
 }
 
-input {
+input,
+select {
     padding: 8px;
     color: black;
 }
@@ -59,7 +62,6 @@ input {
     display: flex;
     flex:1;
     flex-direction: column;
-    color:white;
     padding: 20px 40px;
 }
 
@@ -76,5 +78,5 @@ input {
 }
 
 .section {
-    
+    margin-top: 20px;
 }

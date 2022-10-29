@@ -25,11 +25,12 @@ const handleSubmit = (evento) => {
         };
 
         contasClientes.push(conta);
+        console.log(contasClientes);
         alert(`Conta criada com sucesso! Número: ${conta.conta}`);
     }else {
         alert('Senhas diferentes.');
     }
-
+    
 };
 
 const form = document.getElementById('form');
@@ -108,7 +109,7 @@ const validarConta = (conta, senha) => {
 };
 
 const validarValor = (valor) => {
-    if(isNaN(valor) && valor > 0){
+    if(!isNaN(valor) && valor > 0){
         return true;
     }
     return false;
@@ -136,7 +137,7 @@ const efetuarOperacao = (evento) => {
             case 'DEPOSITO':
                 depositar(conta, valor);
                 break;
-            case 'SAQUE':
+            case 'SALDO':
                 consultarSaldo(conta);
                 break;
             default: 
@@ -151,4 +152,4 @@ const operacao = document.getElementById('operacao');
 operacao.addEventListener('change', trocarOperacao);
 
 const formAcoes = document.getElementById('form-acoes');
-operacao.addEventListener('submit', trocarOperacao);
+formAcoes.addEventListener('submit', efetuarOperacao);
