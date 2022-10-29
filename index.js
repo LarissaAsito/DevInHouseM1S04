@@ -43,13 +43,21 @@ const trocarOperacao = (evento) => {
     valor.required = evento.target.value !== 'SALDO';
 };
 
+const obterConta = (conta) => {
+    const contaCliente = contasClientes.find((c) => c.conta === conta)
+    return contaCliente;
+}
+
 const sacar = (evento) => {};
 const depositar = (evento) => {};
-const consultarSaldo = (evento) => {};
+const consultarSaldo = (conta) => {
+    const contaCliente = obterConta(conta);
+    alert(`Saldo atual: ${contaCliente.saldo}`);
+};
 
 const validarConta = (conta, senha) => {
-    const contaCliente = contasClientes.find((c) => c.conta === conta)
-
+    const contaCliente = obterConta(conta);
+    
     if(contaCliente && contaCliente.senha === senha){
         return true;
     }
@@ -59,8 +67,12 @@ const validarConta = (conta, senha) => {
 
 const efetuarOperacao = (evento) => {
     evento.preventDefault();
+    const conta = parseInt(evento.target.conta.value);
+    const senha = evento.target.senha.value;
 
-    if(validarConta(parseInt(evento.target.conta.value), evento.target.senha.value))
+    const contaValida = validarConta(conta, senha);
+
+    if(contaValida)
     {
         switch(evento.target.operacao.value){
             case 'SAQUE':
@@ -70,7 +82,7 @@ const efetuarOperacao = (evento) => {
                 depositar();
                 break;
             case 'SAQUE':
-                consultarSaldo();
+                consultarSaldo(conta);
                 break;
             default: 
                 alert('Operacao inválida!');
