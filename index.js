@@ -48,7 +48,32 @@ const obterConta = (conta) => {
     return contaCliente;
 }
 
-const sacar = (evento) => {};
+const sacar = (conta, valor) => {
+    if(validarValor(valor)){
+
+        if(validarSaldo(conta, valor)){
+            let saldoAtual
+            const contasAtualizadas = contasClientes.map((c)=> {
+                if(c.conta === conta){
+                    saldoAtual = c.saldo - valor;
+                    return { ...c, saldo: saldoAtual };
+                }
+                return c;
+            });
+
+            contasClientes = contasAtualizadas;
+            alert(`Deposito efetuado com sucesso! Saldo atual ${saldoAtual}`);
+    
+        }else{
+            alert(`Saldo insuficiente`);
+    
+        }
+        
+        }else{
+        alert('Valor inválido');
+    }
+
+};
 const depositar = (conta, valor) => {
     if(validarValor(valor)){
         const contaCliente = {...obterConta(conta)};
@@ -89,6 +114,12 @@ const validarValor = (valor) => {
     return false;
 }
 
+const validarSaldo = (conta, valor) => {
+    const contaCliente = obterConta(conta);
+
+    return contaCliente.saldo >= valor;
+};
+
 const efetuarOperacao = (evento) => {
     evento.preventDefault();
     const conta = parseInt(evento.target.conta.value);
@@ -100,7 +131,7 @@ const efetuarOperacao = (evento) => {
     {
         switch(evento.target.operacao.value){
             case 'SAQUE':
-                sacar();
+                sacar(conta, valor);
                 break;
             case 'DEPOSITO':
                 depositar(conta, valor);
