@@ -49,7 +49,24 @@ const obterConta = (conta) => {
 }
 
 const sacar = (evento) => {};
-const depositar = (evento) => {};
+const depositar = (conta, valor) => {
+    if(validarValor(valor)){
+        const contaCliente = {...obterConta(conta)};
+        contaCliente.saldo += valor;
+        const contasAtualizadas = contasClientes.filter((c)=> c.conta!==conta)
+        contasAtualizadas.push(contaCliente);
+        contasClientes = contasAtualizadas;
+
+        /* isso resolveria
+        const contaCliente = {...obterConta(conta)};
+        contaCliente.saldo += valor; */
+        
+        alert(`Deposito efetuado com sucesso! Saldo atual ${contaCliente.saldo}`);
+    }else{
+        alert('Valor inválido');
+    }
+};
+
 const consultarSaldo = (conta) => {
     const contaCliente = obterConta(conta);
     alert(`Saldo atual: ${contaCliente.saldo}`);
@@ -63,13 +80,20 @@ const validarConta = (conta, senha) => {
     }
 
     return false;
+};
+
+const validarValor = (valor) => {
+    if(isNaN(valor) && valor > 0){
+        return true;
+    }
+    return false;
 }
 
 const efetuarOperacao = (evento) => {
     evento.preventDefault();
     const conta = parseInt(evento.target.conta.value);
     const senha = evento.target.senha.value;
-
+    const valor = parseInt(evento.target.valor.value);
     const contaValida = validarConta(conta, senha);
 
     if(contaValida)
@@ -79,7 +103,7 @@ const efetuarOperacao = (evento) => {
                 sacar();
                 break;
             case 'DEPOSITO':
-                depositar();
+                depositar(conta, valor);
                 break;
             case 'SAQUE':
                 consultarSaldo(conta);
