@@ -25,10 +25,11 @@ const handleSubmit = (evento) => {
         };
 
         contasClientes.push(conta);
-        console.log(contasClientes);
-        alert(`Conta criada com sucesso! Número: ${conta.conta}`);
+        document.getElementById('alerta').innerText = `Conta criada com sucesso! Número: ${conta.conta}`;
+        //alert(`Conta criada com sucesso! Número: ${conta.conta}`);
     }else {
-        alert('Senhas diferentes.');
+        document.getElementById('alerta').innerText = 'Senhas diferentes.';
+        //alert('Senhas diferentes.');
     }
     
 };
@@ -63,15 +64,16 @@ const sacar = (conta, valor) => {
             });
 
             contasClientes = contasAtualizadas;
-            alert(`Deposito efetuado com sucesso! Saldo atual ${saldoAtual}`);
-    
+            //alert(`Deposito efetuado com sucesso! Saldo atual ${saldoAtual}`);
+            document.getElementById('alerta').innerText = `Deposito efetuado com sucesso! Saldo atual ${saldoAtual}`;
         }else{
-            alert(`Saldo insuficiente`);
-    
+            //alert(`Saldo insuficiente`);
+            document.getElementById('alerta').innerText = `Saldo insuficiente`;
         }
         
-        }else{
-        alert('Valor inválido');
+    }else{
+        //alert('Valor inválido');
+        document.getElementById('alerta').innerText = 'Valor inválido';
     }
 
 };
@@ -87,15 +89,18 @@ const depositar = (conta, valor) => {
         const contaCliente = {...obterConta(conta)};
         contaCliente.saldo += valor; */
         
-        alert(`Deposito efetuado com sucesso! Saldo atual ${contaCliente.saldo}`);
+        //alert(`Deposito efetuado com sucesso! Saldo atual ${contaCliente.saldo}`);
+        document.getElementById('alerta').innerText = `Deposito efetuado com sucesso! Saldo atual ${contaCliente.saldo}`;
     }else{
-        alert('Valor inválido');
+        //alert('Valor inválido');
+        document.getElementById('alerta').innerText = 'Valor inválido';
     }
 };
 
 const consultarSaldo = (conta) => {
     const contaCliente = obterConta(conta);
-    alert(`Saldo atual: ${contaCliente.saldo}`);
+    //alert(`Saldo atual: ${contaCliente.saldo}`);
+    document.getElementById('alerta').innerText = `Saldo atual: ${contaCliente.saldo}`;
 };
 
 const validarConta = (conta, senha) => {
@@ -141,10 +146,12 @@ const efetuarOperacao = (evento) => {
                 consultarSaldo(conta);
                 break;
             default: 
-                alert('Operacao inválida!');
+                //alert('Operacao inválida!');
+                document.getElementById('alerta').innerText = 'Operacao inválida!';
         }
     }else{
-        alert('Dados inválidos da conta!');
+        //alert('Dados inválidos da conta!');
+        document.getElementById('alerta').innerText = 'Dados inválidos da conta!';
     }
 };
 

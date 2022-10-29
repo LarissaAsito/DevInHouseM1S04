@@ -27,15 +27,17 @@ body {
 
     min-height: 100vh;
 
-    background-color: black;
-    color:aliceblue
+    background-color: #2b2c30;
+    color:white;
 }
 
 button {
     padding: 8px;
-    color: black;
+    color: white;
     cursor: pointer;
     transition: opacity 0.3s;
+    border-radius: 5px;
+    background-color: #ff3e75;
 }
 
 button:hover {
@@ -46,6 +48,23 @@ input,
 select {
     padding: 8px;
     color: black;
+    border-radius: 5px;
+}
+
+label {
+    display: inline-block;
+    width: 100px;
+}
+
+#alerta {
+    color: black;
+    background-color: white;
+    width: 50vh;
+    height: 20vh;
+    border: solid 1px white;
+    border-radius: 5px;
+    padding: 10px;
+    margin-top: 4vh;
 }
 
 .header {
@@ -54,19 +73,20 @@ select {
     gap: 10px;
     padding: 10px;
 
-    background-color: blanchedalmond;
+    background-color: #ff1457;
     color:black;
 }
 
 .main {
     display: flex;
     flex:1;
-    flex-direction: column;
+    flex-direction: row;
+    justify-content: space-evenly;
     padding: 20px 40px;
 }
 
 .footer {
-    background-color: blanchedalmond;
+    background-color: #ff1457;
     padding: 10px;
     color: black
 }
