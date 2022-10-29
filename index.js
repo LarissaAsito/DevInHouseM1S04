@@ -43,5 +43,45 @@ const trocarOperacao = (evento) => {
     valor.required = evento.target.value !== 'SALDO';
 };
 
+const sacar = (evento) => {};
+const depositar = (evento) => {};
+const consultarSaldo = (evento) => {};
+
+const validarConta = (conta, senha) => {
+    const contaCliente = contasClientes.find((c) => c.conta === conta)
+
+    if(contaCliente && contaCliente.senha === senha){
+        return true;
+    }
+
+    return false;
+}
+
+const efetuarOperacao = (evento) => {
+    evento.preventDefault();
+
+    if(validarConta(parseInt(evento.target.conta.value), evento.target.senha.value))
+    {
+        switch(evento.target.operacao.value){
+            case 'SAQUE':
+                sacar();
+                break;
+            case 'DEPOSITO':
+                depositar();
+                break;
+            case 'SAQUE':
+                consultarSaldo();
+                break;
+            default: 
+                alert('Operacao inválida!');
+        }
+    }else{
+        alert('Dados inválidos da conta!');
+    }
+};
+
 const operacao = document.getElementById('operacao');
 operacao.addEventListener('change', trocarOperacao);
+
+const formAcoes = document.getElementById('form-acoes');
+operacao.addEventListener('submit', trocarOperacao);
